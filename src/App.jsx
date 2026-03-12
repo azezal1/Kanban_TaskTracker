@@ -3,6 +3,8 @@ import { DndContext, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
 import Board from './components/Board';
 import TaskForm from './components/TaskForm';
 import TaskModal from './components/TaskModal';
+import Statistics from './components/Statistics';
+import FilterBar from './components/FilterBar';
 
 function App() {
   const [tasks, setTasks] = useState(() => {
@@ -12,6 +14,8 @@ function App() {
   const [editingTask, setEditingTask] = useState(null);
   const [theme, setTheme] = useState(() => localStorage.getItem('kanban-theme') || 'dark');
   const [searchQuery, setSearchQuery] = useState('');
+  const [filters, setFilters] = useState({ priority: 'all', sortBy: 'created' });
+  const [showStats, setShowStats] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('kanban-tasks', JSON.stringify(tasks));
@@ -62,49 +66,63 @@ function App() {
     setEditingTask(null);
   };
 
-  const filteredTasks = tasks.filter(task => 
-    task.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Filter and sort tasks
+  const filteredTasks = tasks
+    .filter(task => {
+      const matchesSearch = task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           (task.description && task.description.toLowerCase().includes(searchQuery.toLowerCase()));
+      const matchesPriority = filters.priority === 'all' || task.priority === filters.priority;
+      return matchesSearch && matchesPriority;
+    })
+    .sort((a, b) => {
+      switch (filters.sortBy) {
+        case 'priority':
+          const priorityOrder = { High: 3, Medium: 2, Low: 1 };
+          return (priorityOrder[b.priority] || 0) - (priorityOrder[a.priority] || 0);
+        case 'dueDate':
+          if (!a.dueDate) return 1;
+          if (!b.dueDate) return -1;
+          return new Date(a.dueDate) - new Date(b.dueDate);
+        case 'title':
+          return a.title.localeCompare(b.title);
+        default: // 'created'
+          return 0;
+      }
+    });
 
   return (
     <div className="app">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <h1 style={{ margin: 0 }}>Kanban Board</h1>
-        <button 
-          onClick={toggleTheme} 
-          style={{
-            background: 'var(--card-bg)',
-            color: 'var(--text-color)',
-            border: '1px solid var(--task-bg)',
-            padding: '0.5rem 1rem',
-            borderRadius: '0.5rem',
-            cursor: 'pointer'
-          }}
-        >
-          {theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
-        </button>
-      </div>
+      <header className="app-header">
+        <h1>📋 Kanban Board</h1>
+        <div className="header-actions">
+          <button onClick={() => setShowStats(!showStats)} className="icon-btn" title="Statistics">
+            📊 Stats
+          </button>
+          <button onClick={toggleTheme} className="icon-btn" title="Toggle Theme">
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
+        </div>
+      </header>
+
+      {showStats && <Statistics tasks={tasks} />}
+      
       <TaskForm onAddTask={handleAddTask} />
-      <div style={{ marginBottom: '1.5rem' }}>
-        <input 
-          type="text" 
-          placeholder="Search tasks by title..." 
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-          style={{
-            width: '100%',
-            padding: '0.75rem',
-            borderRadius: '0.375rem',
-            border: '1px solid var(--task-bg)',
-            backgroundColor: 'var(--bg-color)',
-            color: 'var(--text-color)',
-            fontSize: '1rem'
-          }}
-        />
-      </div>
+      
+      <FilterBar 
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        filters={filters}
+        onFilterChange={setFilters}
+      />
+
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-        <Board tasks={filteredTasks} onEditTask={setEditingTask} onDeleteTask={handleDeleteTask} />
+        <Board 
+          tasks={filteredTasks} 
+          onEditTask={setEditingTask} 
+          onDeleteTask={handleDeleteTask}
+        />
       </DndContext>
+
       {editingTask && (
         <TaskModal 
           task={editingTask} 

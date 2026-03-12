@@ -10,14 +10,16 @@ function Column({ column, tasks, onEditTask, onDeleteTask }) {
 
   return (
     <div ref={setNodeRef} className={`column ${isOver ? 'column-over' : ''}`}>
-      <h2 className="column-title">{column.title}</h2>
+      <h2 className="column-title">
+        {column.title} <span className="task-count">{tasks.length}</span>
+      </h2>
       <div className="column-content">
         {tasks.map(task => (
           <TaskCard 
             key={task.id} 
             task={task} 
             onEditTask={onEditTask} 
-            onDeleteTask={onDeleteTask} 
+            onDeleteTask={onDeleteTask}
           />
         ))}
       </div>

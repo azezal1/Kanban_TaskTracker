@@ -1,16 +1,115 @@
-# React + Vite
+# 📋 Kanban Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, professional Kanban board application built with React and Vite. Features drag-and-drop task management, real-time filtering, statistics dashboard, and a beautiful responsive design.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-19-blue)
+![Vite](https://img.shields.io/badge/Vite-Latest-purple)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- 🎯 **Drag & Drop** - Smooth task movement between columns (Todo, In Progress, Done)
+- 🔍 **Search & Filter** - Find tasks quickly by title, description, or priority
+- 📊 **Statistics Dashboard** - Track your productivity with real-time metrics
+- 🎨 **Dark/Light Theme** - Toggle between themes with preference persistence
+- 💾 **Auto-save** - All changes automatically saved to localStorage
+- 📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
+- 🏷️ **Task Properties** - Priority levels, tags, due dates, assignees, and comments
+- ⚡ **Fast & Modern** - Built with Vite for lightning-fast development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone <your-repo-url>
+cd kanban-board
+```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Start the development server
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## 🛠️ Built With
+
+- **React 19** - UI library
+- **Vite** - Build tool and dev server
+- **@dnd-kit** - Drag and drop functionality
+- **CSS Variables** - Dynamic theming
+- **localStorage** - Data persistence
+
+## 📖 Usage
+
+### Creating Tasks
+1. Fill in the task form at the top of the page
+2. Add title (required), description, priority, tags, due date, and assignee
+3. Click "Add Task" to create
+
+### Managing Tasks
+- **Move**: Drag and drop tasks between columns
+- **Edit**: Click on any task to open the edit modal
+- **Delete**: Click the ✕ button on a task card
+- **Comment**: Add comments in the task edit modal
+
+### Filtering & Sorting
+- Use the search bar to find specific tasks
+- Filter by priority level (All, High, Medium, Low)
+- Sort by creation date, priority, due date, or title
+
+### Statistics
+- Click the "📊 Stats" button to view your task metrics
+- See total tasks, status breakdown, high priority count, overdue tasks, and completion rate
+
+## 🎨 Customization
+
+The app uses CSS variables for theming. You can customize colors in `src/index.css`:
+
+```css
+:root {
+  --bg-color: #0F172A;
+  --text-color: #F8FAFC;
+  --card-bg: #1E293B;
+  --primary: #3B82F6;
+  /* ... more variables */
+}
+```
+
+## 📦 Build for Production
+
+```bash
+npm run build
+```
+
+The optimized production build will be in the `dist` folder.
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 🙏 Acknowledgments
+
+- Built with [React](https://react.dev/)
+- Powered by [Vite](https://vitejs.dev/)
+- Drag & Drop by [@dnd-kit](https://dndkit.com/)
+
+---
+
+Made with ❤️ for efficient task management
