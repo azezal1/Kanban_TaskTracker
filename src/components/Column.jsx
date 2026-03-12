@@ -1,12 +1,15 @@
 import React from 'react';
+import TaskCard from './TaskCard';
 import '../styles/Column.css';
 
-function Column({ column }) {
+function Column({ column, tasks }) {
   return (
     <div className="column">
       <h2 className="column-title">{column.title}</h2>
       <div className="column-content">
-        {/* Tasks will go here */}
+        {tasks.map(task => (
+          <TaskCard key={task.id} task={task} />
+        ))}
       </div>
     </div>
   );

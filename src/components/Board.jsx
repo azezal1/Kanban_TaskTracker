@@ -8,11 +8,15 @@ const COLUMNS = [
   { id: 'done', title: 'Done' }
 ];
 
-function Board() {
+function Board({ tasks }) {
   return (
     <div className="board">
       {COLUMNS.map(col => (
-        <Column key={col.id} column={col} />
+        <Column 
+          key={col.id} 
+          column={col} 
+          tasks={tasks.filter(t => t.status === col.id)} 
+        />
       ))}
     </div>
   );
