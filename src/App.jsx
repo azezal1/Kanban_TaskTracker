@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { DndContext, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import Board from './components/Board';
 import TaskForm from './components/TaskForm';
+import TaskModal from './components/TaskModal';
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [editingTask, setEditingTask] = useState(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -32,13 +34,25 @@ function App() {
     );
   };
 
+  const handleUpdateTask = (updatedTask) => {
+    setTasks(tasks.map(t => t.id === updatedTask.id ? updatedTask : t));
+    setEditingTask(null);
+  };
+
   return (
     <div className="app">
       <h1>Kanban Board</h1>
       <TaskForm onAddTask={handleAddTask} />
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-        <Board tasks={tasks} />
+        <Board tasks={tasks} onEditTask={setEditingTask} />
       </DndContext>
+      {editingTask && (
+        <TaskModal 
+          task={editingTask} 
+          onClose={() => setEditingTask(null)} 
+          onSave={handleUpdateTask} 
+        />
+      )}
     </div>
   );
 }

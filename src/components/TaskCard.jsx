@@ -2,7 +2,7 @@ import React from 'react';
 import { useDraggable } from '@dnd-kit/core';
 import '../styles/TaskCard.css';
 
-function TaskCard({ task }) {
+function TaskCard({ task, onEditTask }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
     id: task.id,
   });
@@ -21,6 +21,7 @@ function TaskCard({ task }) {
       {...listeners} 
       {...attributes} 
       className={`task-card ${isDragging ? 'dragging' : ''}`}
+      onClick={() => onEditTask(task)}
     >
       <h3 className="task-title">{task.title}</h3>
       {task.description && (
