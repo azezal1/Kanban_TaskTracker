@@ -23,3 +23,7 @@
   gap: 1rem;
   overflow-y: auto;
 }
+
+.column-over {
+  background-color: #334155;
+}
