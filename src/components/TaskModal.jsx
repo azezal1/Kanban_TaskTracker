@@ -54,7 +54,7 @@ function TaskModal({ task, onClose, onSave }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <h2>Edit Task</h2>
+        <h2>✏️ Edit Task</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Title</label>
@@ -93,7 +93,7 @@ function TaskModal({ task, onClose, onSave }) {
           </div>
 
           <div className="form-group">
-            <label>Comments ({comments.length})</label>
+            <label>💬 Comments ({comments.length})</label>
             <div className="comments-section">
               {comments.map(comment => (
                 <div key={comment.id} className="comment">
@@ -121,7 +121,7 @@ function TaskModal({ task, onClose, onSave }) {
                   onKeyPress={e => e.key === 'Enter' && (e.preventDefault(), handleAddComment())}
                 />
                 <button type="button" onClick={handleAddComment} className="btn-add-comment">
-                  Add
+                  💬 Add
                 </button>
               </div>
             </div>
@@ -129,7 +129,7 @@ function TaskModal({ task, onClose, onSave }) {
 
           <div className="modal-actions">
             <button type="button" className="btn-cancel" onClick={onClose}>Cancel</button>
-            <button type="submit" className="btn-save">Save Changes</button>
+            <button type="submit" className="btn-save">💾 Save Changes</button>
           </div>
         </form>
       </div>

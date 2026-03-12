@@ -3,9 +3,9 @@ import Column from './Column';
 import '../styles/Board.css';
 
 const COLUMNS = [
-  { id: 'todo', title: 'Todo' },
-  { id: 'in-progress', title: 'In Progress' },
-  { id: 'done', title: 'Done' }
+  { id: 'todo', title: '📝 Todo' },
+  { id: 'in-progress', title: '⚡ In Progress' },
+  { id: 'done', title: '✅ Done' }
 ];
 
 function Board({ tasks, onEditTask, onDeleteTask }) {

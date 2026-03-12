@@ -93,13 +93,13 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>📋 Kanban Board</h1>
+        <h1>📋 Kanban Task Tracker</h1>
         <div className="header-actions">
           <button onClick={() => setShowStats(!showStats)} className="icon-btn" title="Statistics">
             📊 Stats
           </button>
           <button onClick={toggleTheme} className="icon-btn" title="Toggle Theme">
-            {theme === 'dark' ? '☀️' : '🌙'}
+            {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
           </button>
         </div>
       </header>
