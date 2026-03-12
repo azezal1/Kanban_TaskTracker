@@ -3,7 +3,7 @@ import { useDroppable } from '@dnd-kit/core';
 import TaskCard from './TaskCard';
 import '../styles/Column.css';
 
-function Column({ column, tasks, onEditTask }) {
+function Column({ column, tasks, onEditTask, onDeleteTask }) {
   const { setNodeRef, isOver } = useDroppable({
     id: column.id,
   });
@@ -13,7 +13,12 @@ function Column({ column, tasks, onEditTask }) {
       <h2 className="column-title">{column.title}</h2>
       <div className="column-content">
         {tasks.map(task => (
-          <TaskCard key={task.id} task={task} onEditTask={onEditTask} />
+          <TaskCard 
+            key={task.id} 
+            task={task} 
+            onEditTask={onEditTask} 
+            onDeleteTask={onDeleteTask} 
+          />
         ))}
       </div>
     </div>

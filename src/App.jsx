@@ -39,12 +39,17 @@ function App() {
     setEditingTask(null);
   };
 
+  const handleDeleteTask = (taskId) => {
+    setTasks(tasks.filter(t => t.id !== taskId));
+    setEditingTask(null); // just in case deleting while editing wrapper is open (not likely due to bubbling stop)
+  };
+
   return (
     <div className="app">
       <h1>Kanban Board</h1>
       <TaskForm onAddTask={handleAddTask} />
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-        <Board tasks={tasks} onEditTask={setEditingTask} />
+        <Board tasks={tasks} onEditTask={setEditingTask} onDeleteTask={handleDeleteTask} />
       </DndContext>
       {editingTask && (
         <TaskModal 

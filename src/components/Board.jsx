@@ -8,7 +8,7 @@ const COLUMNS = [
   { id: 'done', title: 'Done' }
 ];
 
-function Board({ tasks, onEditTask }) {
+function Board({ tasks, onEditTask, onDeleteTask }) {
   return (
     <div className="board">
       {COLUMNS.map(col => (
@@ -17,6 +17,7 @@ function Board({ tasks, onEditTask }) {
           column={col} 
           tasks={tasks.filter(t => t.status === col.id)} 
           onEditTask={onEditTask}
+          onDeleteTask={onDeleteTask}
         />
       ))}
     </div>

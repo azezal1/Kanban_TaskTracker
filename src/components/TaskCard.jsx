@@ -23,7 +23,19 @@ function TaskCard({ task, onEditTask }) {
       className={`task-card ${isDragging ? 'dragging' : ''}`}
       onClick={() => onEditTask(task)}
     >
-      <h3 className="task-title">{task.title}</h3>
+      <div className="task-header">
+        <h3 className="task-title">{task.title}</h3>
+        <button 
+          className="delete-btn"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDeleteTask(task.id);
+          }}
+          title="Delete task"
+        >
+          ✕
+        </button>
+      </div>
       {task.description && (
         <p className="task-desc">{task.description}</p>
       )}
