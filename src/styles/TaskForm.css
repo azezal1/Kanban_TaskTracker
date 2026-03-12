@@ -36,3 +36,9 @@
 .add-task-btn:hover {
   background-color: #2563EB;
 }
+
+@media (max-width: 768px) {
+  .task-form {
+    flex-direction: column;
+  }
+}
