@@ -5,7 +5,6 @@ function TaskModal({ task, onClose, onSave }) {
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description || '');
   const [priority, setPriority] = useState(task.priority || 'Low');
-  const [tags, setTags] = useState(task.tags ? task.tags.join(', ') : '');
   const [dueDate, setDueDate] = useState(task.dueDate || '');
   const [assignee, setAssignee] = useState(task.assignee || '');
   const [comments, setComments] = useState(task.comments || []);
@@ -15,7 +14,6 @@ function TaskModal({ task, onClose, onSave }) {
     setTitle(task.title);
     setDescription(task.description || '');
     setPriority(task.priority || 'Low');
-    setTags(task.tags ? task.tags.join(', ') : '');
     setDueDate(task.dueDate || '');
     setAssignee(task.assignee || '');
     setComments(task.comments || []);
@@ -29,7 +27,6 @@ function TaskModal({ task, onClose, onSave }) {
       title: title.trim(), 
       description: description.trim(),
       priority,
-      tags: tags.split(',').map(t => t.trim()).filter(Boolean),
       dueDate: dueDate || null,
       assignee: assignee.trim() || null,
       comments
@@ -76,15 +73,9 @@ function TaskModal({ task, onClose, onSave }) {
             </div>
           </div>
 
-          <div className="form-group row-group">
-            <div className="flex-1">
-              <label>Assignee</label>
-              <input type="text" value={assignee} onChange={e => setAssignee(e.target.value)} placeholder="Who's working on this?" />
-            </div>
-            <div className="flex-2">
-              <label>Tags (comma separated)</label>
-              <input type="text" value={tags} onChange={e => setTags(e.target.value)} />
-            </div>
+          <div className="form-group">
+            <label>Assignee</label>
+            <input type="text" value={assignee} onChange={e => setAssignee(e.target.value)} placeholder="Who's working on this?" />
           </div>
           
           <div className="form-group">

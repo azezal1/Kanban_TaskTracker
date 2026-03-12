@@ -78,14 +78,6 @@ function TaskCard({ task, onEditTask, onDeleteTask }) {
         </div>
       )}
       
-      {task.tags && task.tags.length > 0 && (
-        <div className="tags-container">
-          {task.tags.map((tag, i) => (
-            <span key={i} className="tag-badge">{tag}</span>
-          ))}
-        </div>
-      )}
-      
       {task.description && (
         <p className="task-desc">{task.description}</p>
       )}

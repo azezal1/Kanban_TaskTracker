@@ -5,7 +5,6 @@ function TaskForm({ onAddTask }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('Low');
-  const [tags, setTags] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [assignee, setAssignee] = useState('');
 
@@ -18,7 +17,6 @@ function TaskForm({ onAddTask }) {
       title: title.trim(),
       description: description.trim(),
       priority,
-      tags: tags.split(',').map(t => t.trim()).filter(Boolean),
       dueDate: dueDate || null,
       assignee: assignee.trim() || null,
       comments: [],
@@ -30,7 +28,6 @@ function TaskForm({ onAddTask }) {
     setTitle('');
     setDescription('');
     setPriority('Low');
-    setTags('');
     setDueDate('');
     setAssignee('');
   };
@@ -66,9 +63,9 @@ function TaskForm({ onAddTask }) {
         />
         <input 
           type="text" 
-          placeholder="Tags (comma separated)" 
-          value={tags}
-          onChange={(e) => setTags(e.target.value)}
+          placeholder="Assignee" 
+          value={assignee}
+          onChange={(e) => setAssignee(e.target.value)}
           className="task-input flex-1"
         />
       </div>
@@ -78,13 +75,6 @@ function TaskForm({ onAddTask }) {
           placeholder="Due Date" 
           value={dueDate}
           onChange={(e) => setDueDate(e.target.value)}
-          className="task-input flex-1"
-        />
-        <input 
-          type="text" 
-          placeholder="Assignee" 
-          value={assignee}
-          onChange={(e) => setAssignee(e.target.value)}
           className="task-input flex-1"
         />
         <button type="submit" className="add-task-btn flex-1">➕ Add Task</button>
