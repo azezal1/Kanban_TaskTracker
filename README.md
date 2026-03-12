@@ -6,18 +6,18 @@ A modern, professional Kanban board application built with React and Vite. Featu
 ![Vite](https://img.shields.io/badge/Vite-Latest-purple)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-## ✨ Features
+##  Features
 
-- 🎯 **Drag & Drop** - Smooth task movement between columns (Todo, In Progress, Done)
-- 🔍 **Search & Filter** - Find tasks quickly by title, description, or priority
-- 📊 **Statistics Dashboard** - Track your productivity with real-time metrics
-- 🎨 **Dark/Light Theme** - Toggle between themes with preference persistence
-- 💾 **Auto-save** - All changes automatically saved to localStorage
-- 📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
-- 🏷️ **Task Properties** - Priority levels, tags, due dates, assignees, and comments
-- ⚡ **Fast & Modern** - Built with Vite for lightning-fast development
+-  **Drag & Drop** - Smooth task movement between columns (Todo, In Progress, Done)
+-  **Search & Filter** - Find tasks quickly by title, description, or priority
+-  **Statistics Dashboard** - Track your productivity with real-time metrics
+-  **Dark/Light Theme** - Toggle between themes with preference persistence
+-  **Auto-save** - All changes automatically saved to localStorage
+-  **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
+-  **Task Properties** - Priority levels, tags, due dates, assignees, and comments
+-  **Fast & Modern** - Built with Vite for lightning-fast development
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -74,7 +74,7 @@ npm run dev
 - Click the "📊 Stats" button to view your task metrics
 - See total tasks, status breakdown, high priority count, overdue tasks, and completion rate
 
-## 🎨 Customization
+##  Customization
 
 The app uses CSS variables for theming. You can customize colors in `src/index.css`:
 
@@ -88,7 +88,7 @@ The app uses CSS variables for theming. You can customize colors in `src/index.c
 }
 ```
 
-## 📦 Build for Production
+##  Build for Production
 
 ```bash
 npm run build
@@ -96,15 +96,15 @@ npm run build
 
 The optimized production build will be in the `dist` folder.
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Feel free to open issues or submit pull requests.
 
-## 📄 License
+##  License
 
 This project is open source and available under the MIT License.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Built with [React](https://react.dev/)
 - Powered by [Vite](https://vitejs.dev/)
@@ -112,4 +112,4 @@ This project is open source and available under the MIT License.
 
 ---
 
-Made with ❤️ for efficient task management
+Made for efficient task management
