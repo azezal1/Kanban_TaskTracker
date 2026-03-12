@@ -1,11 +1,19 @@
 .task-form {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  flex-direction: column;
   background-color: #1E293B;
   padding: 1.5rem;
   border-radius: 0.5rem;
 }
+
+.form-inputs-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
 
 .task-input {
   flex: 1;

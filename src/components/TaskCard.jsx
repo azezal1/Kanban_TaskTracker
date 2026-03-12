@@ -2,7 +2,7 @@ import React from 'react';
 import { useDraggable } from '@dnd-kit/core';
 import '../styles/TaskCard.css';
 
-function TaskCard({ task, onEditTask }) {
+function TaskCard({ task, onEditTask, onDeleteTask }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
     id: task.id,
   });
@@ -24,7 +24,14 @@ function TaskCard({ task, onEditTask }) {
       onClick={() => onEditTask(task)}
     >
       <div className="task-header">
-        <h3 className="task-title">{task.title}</h3>
+        <div className="task-header-left">
+          <h3 className="task-title">{task.title}</h3>
+          {(task.priority && task.priority !== 'Low') && (
+            <span className={`priority-badge priority-${task.priority.toLowerCase()}`}>
+              {task.priority}
+            </span>
+          )}
+        </div>
         <button 
           className="delete-btn"
           onClick={(e) => {
@@ -36,6 +43,13 @@ function TaskCard({ task, onEditTask }) {
           ✕
         </button>
       </div>
+      {task.tags && task.tags.length > 0 && (
+        <div className="tags-container">
+          {task.tags.map((tag, i) => (
+            <span key={i} className="tag-badge">{tag}</span>
+          ))}
+        </div>
+      )}
       {task.description && (
         <p className="task-desc">{task.description}</p>
       )}

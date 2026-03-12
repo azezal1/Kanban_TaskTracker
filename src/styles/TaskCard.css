@@ -61,3 +61,36 @@
   opacity: 1;
   background-color: rgba(239, 68, 68, 0.1);
 }
+
+.task-header-left {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.priority-badge {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.priority-medium { background-color: rgba(234, 179, 8, 0.2); color: #FACC15; }
+.priority-high { background-color: rgba(239, 68, 68, 0.2); color: #F87171; }
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.tag-badge {
+  background-color: #475569;
+  color: #E2E8F0;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+}
