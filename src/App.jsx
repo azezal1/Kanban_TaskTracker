@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DndContext, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import Board from './components/Board';
 import TaskForm from './components/TaskForm';
 import TaskModal from './components/TaskModal';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const saved = localStorage.getItem('kanban-tasks');
+    return saved ? JSON.parse(saved) : [];
+  });
   const [editingTask, setEditingTask] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('kanban-tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
