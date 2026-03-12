@@ -11,6 +11,7 @@ function App() {
   });
   const [editingTask, setEditingTask] = useState(null);
   const [theme, setTheme] = useState(() => localStorage.getItem('kanban-theme') || 'dark');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     localStorage.setItem('kanban-tasks', JSON.stringify(tasks));
@@ -61,6 +62,10 @@ function App() {
     setEditingTask(null);
   };
 
+  const filteredTasks = tasks.filter(task => 
+    task.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="app">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
@@ -80,8 +85,25 @@ function App() {
         </button>
       </div>
       <TaskForm onAddTask={handleAddTask} />
+      <div style={{ marginBottom: '1.5rem' }}>
+        <input 
+          type="text" 
+          placeholder="Search tasks by title..." 
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
+          style={{
+            width: '100%',
+            padding: '0.75rem',
+            borderRadius: '0.375rem',
+            border: '1px solid var(--task-bg)',
+            backgroundColor: 'var(--bg-color)',
+            color: 'var(--text-color)',
+            fontSize: '1rem'
+          }}
+        />
+      </div>
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-        <Board tasks={tasks} onEditTask={setEditingTask} onDeleteTask={handleDeleteTask} />
+        <Board tasks={filteredTasks} onEditTask={setEditingTask} onDeleteTask={handleDeleteTask} />
       </DndContext>
       {editingTask && (
         <TaskModal 
