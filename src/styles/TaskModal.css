@@ -9,7 +9,7 @@
 }
 
 .modal-content {
-  background-color: #1E293B;
+  background-color: var(--card-bg);
   padding: 2rem;
   border-radius: 0.5rem;
   width: 100%;
@@ -19,7 +19,7 @@
 
 .modal-content h2 {
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid var(--task-bg);
   padding-bottom: 0.5rem;
 }
 
@@ -31,7 +31,7 @@
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #CBD5E1;
+  color: var(--text-muted);
 }
 
 .row-group {
@@ -46,9 +46,9 @@
   width: 100%;
   padding: 0.75rem;
   border-radius: 0.375rem;
-  border: 1px solid #334155;
-  background-color: #0F172A;
-  color: #F8FAFC;
+  border: 1px solid var(--task-bg);
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: inherit;
 }
 
@@ -74,9 +74,9 @@
 
 .btn-cancel {
   background-color: transparent;
-  color: #CBD5E1;
+  color: var(--text-muted);
 }
-.btn-cancel:hover { background-color: #334155; }
+.btn-cancel:hover { background-color: var(--task-bg); }
 
 .btn-save {
   background-color: #3B82F6;

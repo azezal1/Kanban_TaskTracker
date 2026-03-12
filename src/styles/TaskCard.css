@@ -1,5 +1,5 @@
 .task-card {
-  background-color: #334155;
+  background-color: var(--task-bg);
   padding: 1rem;
   border-radius: 0.375rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -8,7 +8,7 @@
 }
 
 .task-card:hover {
-  background-color: #475569;
+  background-color: var(--task-bg-hover);
 }
 
 .task-card:active {
@@ -19,12 +19,12 @@
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
-  color: #F8FAFC;
+  color: var(--text-color);
 }
 
 .task-desc {
   font-size: 0.875rem;
-  color: #CBD5E1;
+  color: var(--text-muted);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
@@ -42,7 +42,7 @@
 .task-title {
   font-size: 1rem;
   font-weight: 500;
-  color: #F8FAFC;
+  color: var(--text-color);
   margin: 0;
 }
 
@@ -88,7 +88,7 @@
 }
 
 .tag-badge {
-  background-color: #475569;
+  background-color: var(--task-bg-hover);
   color: #E2E8F0;
   font-size: 0.7rem;
   padding: 0.15rem 0.4rem;

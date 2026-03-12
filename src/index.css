@@ -1,3 +1,21 @@
+:root {
+  --bg-color: #0F172A;
+  --text-color: #F8FAFC;
+  --card-bg: #1E293B;
+  --task-bg: #334155;
+  --task-bg-hover: #475569;
+  --text-muted: #CBD5E1;
+}
+
+[data-theme='light'] {
+  --bg-color: #F1F5F9;
+  --text-color: #0F172A;
+  --card-bg: #E2E8F0;
+  --task-bg: #FFFFFF;
+  --task-bg-hover: #F8FAFC;
+  --text-muted: #475569;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,8 +25,8 @@
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
-  background-color: #0F172A;
-  color: #F8FAFC;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .app {

@@ -10,10 +10,20 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
   const [editingTask, setEditingTask] = useState(null);
+  const [theme, setTheme] = useState(() => localStorage.getItem('kanban-theme') || 'dark');
 
   useEffect(() => {
     localStorage.setItem('kanban-tasks', JSON.stringify(tasks));
   }, [tasks]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('kanban-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(t => t === 'dark' ? 'light' : 'dark');
+  };
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -48,12 +58,27 @@ function App() {
 
   const handleDeleteTask = (taskId) => {
     setTasks(tasks.filter(t => t.id !== taskId));
-    setEditingTask(null); // just in case deleting while editing wrapper is open (not likely due to bubbling stop)
+    setEditingTask(null);
   };
 
   return (
     <div className="app">
-      <h1>Kanban Board</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <h1 style={{ margin: 0 }}>Kanban Board</h1>
+        <button 
+          onClick={toggleTheme} 
+          style={{
+            background: 'var(--card-bg)',
+            color: 'var(--text-color)',
+            border: '1px solid var(--task-bg)',
+            padding: '0.5rem 1rem',
+            borderRadius: '0.5rem',
+            cursor: 'pointer'
+          }}
+        >
+          {theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+        </button>
+      </div>
       <TaskForm onAddTask={handleAddTask} />
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
         <Board tasks={tasks} onEditTask={setEditingTask} onDeleteTask={handleDeleteTask} />
