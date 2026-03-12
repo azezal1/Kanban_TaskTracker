@@ -1,0 +1,15 @@
+.board {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  height: calc(100vh - 8rem);
+}
+
+@media (max-width: 768px) {
+  .board {
+    flex-direction: column;
+    height: auto;
+    overflow-x: hidden;
+  }
+}
